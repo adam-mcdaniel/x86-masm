@@ -1,0 +1,130 @@
+
+  +-------------------------------------------------------------------------+
+  |                                                                         |
+  |  This program is released to the public domain by the author on         |
+  |  February 15, 1989 at the Software Development Conference,              |
+  |  San Francisco, CA.  With the understanding that there are no           |
+  |  warranties of any sort either expressed or implied, you may use the    |
+  |  code in whole or part for any lawful purpose.  The author does not     |
+  |  warrant or guarantee that this code is fit for any particular purpose. |
+  |  You are under no obligation to acknowledge the author when using this  |
+  |  code, but you may do so if you desire.  The author neither seeks nor   |
+  |  desires any contributions for this code.                               |
+  |                                                                         |
+  |  Should you desire to communicate with the author, the preferred method |
+  |  is via the author's bulletin board, Pontchippi.  Pontchippi is an      |
+  |  OPUS board.  You may contact it directly at 504-244-1417 or via net    |
+  |  mail to node 390/105.  The board has a 9600 baud US Robotics Courier   |
+  |  HST modem.  Should you contact the board directly, access to the board |
+  |  is granted immediately up completion of a very simple questionnaire.   |
+  |                                                                         |
+  |  The author wishes to acknowledge and thank Jack Purdum and Tim Leslie  |
+  |  of Ecosoft for their assistance and support.  In addition to Jack and  |
+  |  Tim, Steve Russell of SLR Systems was also of invaluable assistance.   |
+  |  All helped in this project by debugging and offering their expert      |
+  |  advice and guidance.  They always had time for me seemingly whenever   |
+  |  I requested it.                                                        |
+  |                                                                         |
+  |  Finally, this program is dedicated to the memory of my father-in-law,  |
+  |  Mariano "Val" Valentino.  The only request the author makes for        |
+  |  using the program is that the program name be left as "VAL" in his     |
+  |  memory.                                                                |
+  |                                                                         |
+  |  David Troendle                                                         |
+  |  New Orleans, LA                                                        |
+  |  February 10, 1989                                                      |
+  |                                                                         |
+  +-------------------------------------------------------------------------+
+
+Toad Hall Notes:
+
+VAL.EXE is an undocumented linker.  Since the authors didn't send any
+documentation, we'll have to figure it out ourselves.  I've done a little,
+and hopefully others will contribute to the fund of knowledge.  Email me
+whatever you learn and I'll continue to update VAL.DOC.
+
+
+From V.BAT:
+	asm  ted1 ted1 nul nul
+	val /co ted1, , , ,
+
+If you enter no command line at all (or missing parameters),
+VAL queries you for
+
+	OBJ file(s):
+	EXE file[d:\name.exe]:
+	LST file:
+	LIB file(s):
+
+So you can designate the file names for output, *and* the names of any
+(assumably MASM-compatible) .LIBs you wish to use.  It looks like the
+command line syntax would be:
+
+val /co ted1, , , ,
+
+Syntax: VAL objfiles, exefile, mapfile, libfiles, ???file
+
+Command line switches:
+
+From what I've been able to figure out via experimentation:
+
+	/co		produces .COM executable
+	/map		produces .MAP file
+
+
+A dump of text within VAL.EXE revealed interesting words (possible
+commandline switches or parameters) :
+
+	alignexeheader
+	buffersize
+	caseignore
+	comfile
+	cparmaxalloc
+	detaillevel
+	dosseg
+	exechecksum
+	grouphashsize
+	lnamehashsize
+	maxexternals
+	maxgroups
+	maxlnames
+	maxsegments
+
+which just might correlate with these error messages:
+
+ Error:  Too many externals.  Max of %u exceeded.
+         Retry with larger "/maxexternals:n" switch.
+
+ Error:  Too many GRPDEFs.  Max of %u exceeded.
+         Retry with larger "/maxgroups:n" switch.
+ Error:  Too many LNAMES.  Max of %u exceeded.
+         Retry with larger "/maxlnames:n" switch.
+
+ Error:  Too many SEGDEFs.  Max of %u exceeded.
+         Retry with larger "/maxsegments:n" switch.
+
+Try running again with smaller buffersize and/or
+virtualized fixup processing.
+
+
+[Some other possible switches:]
+
+	noalignexeheader
+	nocaseignore
+	nocomfile
+	nodosseg
+	noexechecksum
+	nomap
+	noobjchecksum
+	nopackcode
+	nopause
+	nosysfile
+	nostatistics
+	order
+	publichashsize
+	segmenthashsize
+
+
+David Kirschbaum
+Toad Hall
+kirschd@hq.ljl.com

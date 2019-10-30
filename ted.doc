@@ -1,0 +1,68 @@
+TED
+Command
+
+Tom Kihlken 
+1988 No. 19 (Utilities)
+
+
+Purpose:	A small, full-screen editor for line-oriented files of up to 
+64K in length that supports scrolling, cut, copy, paste, and printing
+operations, and permits entry of all members of the IBM character set.
+	
+Format:	TED [filespec]
+	
+Remarks:	TED will open and read a file whose name (and path, if required)
+are supplied initially.  If no filespec is provided it will open a new file and
+prompt for a filename when the Save and Exit command (F7) is given.  The
+original of a modified file is saved with a .BAK extension.  The Abort command
+(F1), when verified, abandons any modifications and leaves the original file
+intact.
+
+	Lines may be of any length, and each must be terminated by pressing
+Enter.  Lines longer than the screen width display a diamond in the rightmost
+column.  Offscreen characters (up to 248 columns) may be viewed by using the
+Ctrl-<arrow> keys.  Lines may be broken by pressing Enter at any point, and may
+be conflated by pressing Delete at the line end.
+
+F1 -- (Abort) exit with out saving.
+F2 -- (Cut) removes blocked text to the paste buffer.
+F3 -- (Print) Pressing F3 prints the blocked text. 
+F4 -- (Mark) A block of text is defined by toggling on the Mark command (F4)
+      and moving the cursor with the arrow keys.  The Marked area is shown in
+      inverse video.
+F5 -- (Copy) copies blocked text to the paste buffer.
+F6 -- (Paste) inserts text from the paste buffer at any point where the 
+      cursor is located.  The paste buffer remains intact until another 
+      section is cut or copied.
+F7 -- (Exit) Save and Exit
+F8 -- (Find) Finds a String of characters.
+F9 -- (Del l) deletes the entire line. 
+F10 - (Udel l) restores the most recent deletion of F9.  
+
+Ctrl F1 -- (Open) Opens a new file.
+Ctrl F2 -- (New) Cuts away all text from the file buffer. Other buffers
+	   remain unchanged
+Ctrl F5 -- (Copy2d) copies blocked text to a disk file.
+Ctrl F6 -- (Merge) inserts text from a disk file.
+Ctrl F7 -- (Save) saves with out exiting.
+Ctrl F8 -- (Find_r) finds another occurance of the same string.
+
+
+	The Home and End keys move the cursor to the beginning and end of the
+current screen line; the Tab key moves to the next column evenly divisible by
+eight.  Text is entered in Insert mode by default; pressing the Insert key
+toggles to overstrike mode.  TED configures itself to the display in use and
+supports EGA and VGA text mode 3, the standard 80 columns by 25 rows.
+PgUp and PgDn scroll the file by the number of rows displayed, minus 5.  
+Ctrl-PgUp and Ctrl-PgDn move to the top and bottom of the file.  
+
+	Any character in the IBM set can be entered by pressing the Alt key,
+typing its ASCII value on the numeric keypad, then releasing the Alt key. 
+
+
+
+I HOPE YOU ENJOY THE CHANGES I MADE TO THE "TED" SOURCE CODE.
+I ADD A FEW THINGS TO MAKE MY PROGAMMING EASIER, AND I AM
+PASSING THE SOURCE CODE ON TO YOU SO YOU CAN DO THE SAME.
+ROGER SCHROLL
+
