@@ -67,9 +67,11 @@ _start  ENDP
 1. Click `step into`
 
 ![Step Into](step_into.png)
+
 2. View Registers
 
 ![View Registers](view_registers.png)
+
 3. Arrange Windows
 
 ![Arrange Windows](arrange_windows.png)
