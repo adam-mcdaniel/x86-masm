@@ -59,3 +59,16 @@ exit:   EVEN
 _start  ENDP
         END
 ```
+
+# Debugging
+
+`assemble.bat` will automatically start the debugger, but you will need to do some extra steps to actually debug your program.
+
+1. Click `step into`
+![Step Into](step_into.png)
+2. View Registers
+![View Registers](view_registers.png)
+3. Arrange Windows
+![Arrange Windows](arrange_windows.png)
+
+Now, whenever you click `step into`, the program will execute a single line of assembly code. To debug your program, view the registers while you execute your code line by line.
